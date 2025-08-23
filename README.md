@@ -41,6 +41,7 @@ Application Scenarios of Traffic Sign Detection in Autonomous Driving.
     <th> <a - </th>
     <th> <a - </a> </th>
     <th> <a href="https://drive.google.com/drive/folders/1bbIGjhTXnWIgicjVX_L2kxxeKGlGdik9?usp=sharing">Download</a> </th>
+    <th> <a - </a> </th>
   </tr>
 </tbody>
 </table>
@@ -58,7 +59,6 @@ datasets
 │   └── Classification based on weather and environment
 │       ├── cloud
 │       ├── foggy
-│       ├── cloud
 │       ├── night
 │       ├── rain
 │       ├── snow
@@ -67,11 +67,22 @@ datasets
 │   ├── train
 │   └── val
 ├── Generated-TT100K-weather
-    ├── train
-    ├── test
-    └── Classification based on weather and environment
-        ├── night-test
-        ├── rain-test
+│   ├── train
+│   ├── test
+│   └── Classification based on weather and environment
+│       ├── night-test
+│       ├── rain-test
+├── CAWTSSS
+│   ├── train
+│   ├── val
+│   └── weather-test
+│       ├── cloud
+│       ├── foggy
+│       ├── night
+│       ├── rain
+│       ├── sand
+│       ├── snow
+│       ├── sunny
 ```
 
 ## Requirements
