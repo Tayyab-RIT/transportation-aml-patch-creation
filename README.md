@@ -138,11 +138,11 @@ The trained weight files for different datasets are listed below, including both
 ## Citation
 If you use YOLO-TS, please consider citing:
 ```
-@article{chen2024yolo,
+@article{yolo-ts,
   title={YOLO-TS: Real-Time Traffic Sign Detection with Enhanced Accuracy Using Optimized Receptive Fields and Anchor-Free Fusion},
   author={Chen, Junzhou and Huang, Heqiang and Zhang, Ronghui and Lyu, Nengchao and Guo, Yanyong and Dai, Hong-Ning and Yan, Hong},
-  journal={arXiv preprint arXiv:2410.17144},
-  year={2024}
+  journal={IEEE Transactions on Intelligent Transportation Systems},
+  year={2025}
 }
 ```
 
