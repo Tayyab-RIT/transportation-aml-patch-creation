@@ -23,6 +23,7 @@ Application Scenarios of Traffic Sign Detection in Autonomous Driving.
     <th>CCTSDB2021</th>
     <th>GTSDB</th>
     <th>Generated-TT100K-weather</th>
+    <th>CAWTSSS</th>
   </tr>
 </thead>
 <tbody>
@@ -32,6 +33,7 @@ Application Scenarios of Traffic Sign Detection in Autonomous Driving.
     <th> <a href="https://pan.quark.cn/s/ea20e9bfb364">Download (XTy3)</a> </th>
     <th> <a href="https://pan.quark.cn/s/b4b672efc69b">Download (xkND)</a> </th>
     <th> <a href="https://pan.quark.cn/s/eb6c18fb4ec5">Download (is1U)</a> </th>
+    <th> <a href="https://pan.quark.cn/s/5b4cd5f5de1a?pwd=tydP">Download (tydp)</a> </th>
   </tr>
    <tr>
     <th>Google Drive</th>
