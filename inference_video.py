@@ -11,7 +11,7 @@ os.environ.setdefault("TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD", "1")
 def main() -> None:
     root = Path(__file__).resolve().parent
     weights = root / "pre_trained.pt"
-    video_path = root / "vid1.mp4"
+    video_path = root / "videos" / "vid1.mp4"
 
     if not weights.exists():
         raise FileNotFoundError(f"Weights not found: {weights}")
@@ -24,13 +24,16 @@ def main() -> None:
         raise RuntimeError(f"Could not open video: {video_path}")
 
     window_name = "YOLO-TS Real-time Inference (press q to quit)"
+    target_fps = 24.0
+    frame_interval = 1.0 / target_fps
     prev_time = time.time()
 
     while True:
+        loop_start = time.time()
         ok, frame = cap.read()
-        frame_720p = cv2.resize(frame, (1280, 720))
         if not ok:
             break
+        frame_720p = cv2.resize(frame, (1280, 720))
 
         results = model.predict(frame_720p, conf=0.25, verbose=False)
         annotated = results[0].plot()
@@ -52,6 +55,10 @@ def main() -> None:
         cv2.imshow(window_name, annotated)
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
+
+        elapsed = time.time() - loop_start
+        if elapsed < frame_interval:
+            time.sleep(frame_interval - elapsed)
 
     cap.release()
     cv2.destroyAllWindows()
