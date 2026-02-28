@@ -11,7 +11,10 @@ os.environ.setdefault("TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD", "1")
 def main() -> None:
     root = Path(__file__).resolve().parent
     weights = root / "pre_trained.pt"
-    video_path = root / "videos" / "vid1.mp4"
+    video_path = root / "samples" / "videos" / "vid1.mp4"
+    outputs_dir = root / "outputs"
+    outputs_dir.mkdir(parents=True, exist_ok=True)
+    output_path = outputs_dir / "vid1_annotated.mp4"
 
     if not weights.exists():
         raise FileNotFoundError(f"Weights not found: {weights}")
@@ -27,6 +30,15 @@ def main() -> None:
     target_fps = 24.0
     frame_interval = 1.0 / target_fps
     prev_time = time.time()
+    source_fps = cap.get(cv2.CAP_PROP_FPS)
+    # output_fps = source_fps if source_fps and source_fps > 0 else target_fps
+    output_fps = 10.0
+    writer = cv2.VideoWriter(
+        str(output_path),
+        cv2.VideoWriter_fourcc(*"mp4v"), # type: ignore
+        output_fps,
+        (1280, 720),
+    )
 
     while True:
         loop_start = time.time()
@@ -53,6 +65,7 @@ def main() -> None:
         )
 
         cv2.imshow(window_name, annotated)
+        writer.write(annotated)
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
@@ -61,6 +74,7 @@ def main() -> None:
             time.sleep(frame_interval - elapsed)
 
     cap.release()
+    writer.release()
     cv2.destroyAllWindows()
 
 

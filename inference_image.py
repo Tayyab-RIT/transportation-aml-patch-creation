@@ -7,8 +7,8 @@ os.environ.setdefault("TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD", "1")
 
 def main() -> None:
     root = Path(__file__).resolve().parent
-    weights = root / "TT100k_best.pt"
-    image = root / "samples" / "images" / "speed_signs2.jpg"
+    weights = root / "models" / "CCTSDB2021_best.pt"
+    image = root / "samples" / "images" / "signs.webp"
 
     if not weights.exists():
         raise FileNotFoundError(f"Weights not found: {weights}")
@@ -19,14 +19,14 @@ def main() -> None:
     results = model.predict(
         source=str(image),
         save=True,
-        project=str(root / "runs"),
+        project=str(root / "outputs"),
         name="infer_pretrained",
         exist_ok=True,
         conf=0.25,
     )
 
     print(f"Detections: {len(results[0].boxes)}")
-    print(f"Saved output under: {root / 'runs' / 'infer_pretrained'}")
+    print(f"Saved output under: {root / 'outputs' / 'infer_pretrained'}")
 
 
 if __name__ == "__main__":
